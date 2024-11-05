@@ -1,12 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:social_media/Register_page.dart';
+
 import 'package:social_media/authentication.dart';
-import 'package:social_media/login_page.dart';
+import 'package:social_media/firebase_options.dart';
+
 import 'package:social_media/themes/darkmode.dart';
 import 'package:social_media/themes/lightmode.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
   runApp(const MainApp());
+  
 }
 
 class MainApp extends StatelessWidget {
