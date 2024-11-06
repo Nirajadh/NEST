@@ -1,16 +1,47 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:social_media/mybutton.dart';
 import 'package:social_media/mytextfield.dart';
 
-class Loginpage extends StatelessWidget {
+class Loginpage extends StatefulWidget {
   final void Function()? ontap;
-  const Loginpage({super.key , required this.ontap});
+  const Loginpage({super.key, required this.ontap});
+
+  @override
+  State<Loginpage> createState() => _LoginpageState();
+}
+
+class _LoginpageState extends State<Loginpage> {
+  TextEditingController emailcontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
+
+
+  loginuser() async{
+  showDialog(context: context, builder: (context){
+    return
+
+    const  Center(child: CircularProgressIndicator());
+
+  });
+
+  try {
+     
+  await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailcontroller.text, password: passwordcontroller.text);
+  if (context.mounted) Navigator.pop(context);
+
+  
+
+  } catch (e) {
+    Navigator.pop(context);
+    print( e.toString());
+    
+  }
+ 
+
+  }
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailcontroller = TextEditingController();
-    TextEditingController passwordcontroller = TextEditingController();
-
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: Center(
@@ -44,7 +75,7 @@ class Loginpage extends StatelessWidget {
                   hintText: 'Password',
                   controller: passwordcontroller,
                   obscureText: true),
-                     const SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Row(
@@ -61,23 +92,26 @@ class Loginpage extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              MyButton(text: 'Sign in', ontap: () {}),
-                const SizedBox(
+              MyButton(text: 'Sign in', ontap: () {loginuser();}),
+              const SizedBox(
                 height: 12,
               ),
-             Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("Don't have an account? ",style: TextStyle(fontSize: 12),),
-                    GestureDetector(
-                      onTap: 
-                        ontap,
-                      
-                      child: const Text("Register Here",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),)),
+                  const Text(
+                    "Don't have an account? ",
+                    style: TextStyle(fontSize: 12),
+                  ),
+                  GestureDetector(
+                      onTap: widget.ontap,
+                      child: const Text(
+                        "Register Here",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 12),
+                      )),
                 ],
               ),
-              
-            
             ],
           ),
         ),

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:social_media/Register_page.dart';
 import 'package:social_media/login_page.dart';
 
-class Auth extends StatefulWidget {
-  const Auth({super.key});
+class loginorregister extends StatefulWidget {
+  const loginorregister({super.key});
 
   @override
-  State<Auth> createState() => _AuthState();
+  State<loginorregister> createState() => _AuthState();
 }
 
-class _AuthState extends State<Auth> {
+class _AuthState extends State<loginorregister> {
 bool showloginpage = true;
 
   void togglepages(){

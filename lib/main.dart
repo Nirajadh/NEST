@@ -1,8 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:social_media/auth.dart';
 
-import 'package:social_media/authentication.dart';
 import 'package:social_media/firebase_options.dart';
+import 'package:social_media/homepage.dart';
 
 import 'package:social_media/themes/darkmode.dart';
 import 'package:social_media/themes/lightmode.dart';
