@@ -17,24 +17,19 @@ class _LoginpageState extends State<Loginpage> {
 
 
   loginuser() async{
-  showDialog(context: context, builder: (context){
-    return
 
-    
-
-  });
 
   try {
      
   await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailcontroller.text, password: passwordcontroller.text);
-
+if (context.mounted) Navigator.pop(context);
 
   
 
   } catch (e) {
    
     print( e.toString());
-    Navigator.pop(context);
+  
   }
   
 

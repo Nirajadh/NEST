@@ -18,14 +18,10 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController usernamecontroller = TextEditingController();
   TextEditingController confirmpasswordcontroller = TextEditingController();
   void registeruser() async {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return const Center(child: CircularProgressIndicator());
-        });
+  
 
     if (passwordcontroller.text != confirmpasswordcontroller.text) {
-      Navigator.of(context).pop();
+   
 
       print('error');
     } else {
@@ -36,9 +32,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 email: emailcontroller.text, password: passwordcontroller.text);
         createuserdocument(userCredential);
         // ignore: use_build_context_synchronously
-        if (context.mounted) Navigator.pop(context);
+ if (context.mounted) Navigator.pop(context);
       } on FirebaseAuthException catch (e) {
-        Navigator.pop(context);
+    
         print(e);
       }
       
