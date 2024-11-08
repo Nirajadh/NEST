@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:social_media/users_page.dart';
 class Mydrawer extends StatelessWidget {
   const Mydrawer({super.key});
 
@@ -24,7 +22,7 @@ class Mydrawer extends StatelessWidget {
                 ListTile(
           leading: const Icon(Icons.home),
           onTap: (){Navigator.pop(context);
-          Navigator.pushNamed(context,'/homepage');
+          // Navigator.pushNamed(context,'/homepage');
           
           },
 

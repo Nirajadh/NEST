@@ -20,22 +20,23 @@ class _LoginpageState extends State<Loginpage> {
   showDialog(context: context, builder: (context){
     return
 
-    const  Center(child: CircularProgressIndicator());
+    
 
   });
 
   try {
      
   await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailcontroller.text, password: passwordcontroller.text);
-  if (context.mounted) Navigator.pop(context);
+
 
   
 
   } catch (e) {
-    Navigator.pop(context);
+   
     print( e.toString());
-    
+    Navigator.pop(context);
   }
+  
 
 
   }
